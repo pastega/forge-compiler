@@ -1,37 +1,57 @@
+![Project Logo](assets/logo.png)
 
-# Forge Compiler Toolchain
+## Forge
 
-Forge is a modular compiler toolchain written in Go. It aims to provide a full pipeline from preprocessing to code generation, supporting C-like languages and extensible for new frontends and backends.
+Has nothing to do with game modding...
 
-## Features
+Forge is an experimental C frontend & preprocessor (and aspiring full compiler toolchain) written in Go
 
-- C-like preprocessor with macro replacement and file inclusion
-- Lexical analysis (lexer/tokenizer)
-- Parsing (AST builder)
-- Semantic analysis (type checking, symbol table)
-- Code generation (assembly, bytecode, or other targets)
-- Cycle detection for includes
-- Simple, extensible design
+Forge is a learning-oriented, just-for-fun experiment to build something that walks and talks like a real compiler — starting with a C preprocessor, then growing into a full frontend capable of parsing C into an AST.
 
-## Project Structure
+It’s not production-ready. It’s not meant to replace gcc or clang. It’s here because compilers are fun, weird, and full of opportunities to learn about language design, parsing, and toolchain internals.
 
-```
-cmd/forgec/         # Compiler CLI entry point
-internal/cpreproc/  # Preprocessor
-internal/lexer/     # Lexical analysis
-internal/parser/    # Syntax analysis
-internal/ast/       # AST definitions
-internal/semantic/  # Semantic analysis
-internal/codegen/   # Code generation
-```
+## Features (so far)
 
-## Development
+### 📝 Custom Preprocessor
 
-- Extend each stage (preprocessor, lexer, parser, etc.) as needed
-- Add more macro types or conditional compilation
-- Add tests for each stage in `*_test.go` files
-- Use a logger for diagnostics and debugging
+Handles #define macros (simple replacements)
 
-## License
+Handles #include with cycle detection
 
-MIT License
+Expands macros in regular code lines
+
+### 🛠 Written in Go
+
+Leverages Go’s strong standard library for file handling, regex, and scanning
+
+Keeps things minimal and approachable
+
+### 🧪 Testable Design
+
+Processing functions are easy to test with in-memory strings
+
+Step-by-step development, one feature at a time
+
+## Roadmap
+
+This is not a promise — more like a treasure map:
+
+- Preprocessor (#define, #include, conditional compilation)
+
+- Lexical analysis (scanner/lexer for C source)
+
+- Parsing into an Abstract Syntax Tree (AST)
+
+- Semantic analysis (types, scopes)
+
+- Code generation (likely to an intermediate format, maybe LLVM IR)
+
+## Why?
+
+- Because compilers are magic until you peek inside them.
+- Because writing one teaches you how languages really work.
+- Because C is both a nightmare and a wonder of software history.
+
+## Status
+
+🚧 Highly experimental. Expect broken things, strange behavior, and an overuse of fmt.Printf debugging.
