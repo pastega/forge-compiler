@@ -1,4 +1,4 @@
-![Project Logo](assets/logo.png)
+<img src="assets/logo.png" alt="Project Logo" width="100">
 
 ## Forge
 
